@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/layout": "^1.5.1",
-    "@chakra-ui/react": "^1.7.2",
+    "@chakra-ui/layout": "^2.0.1",
+    "@chakra-ui/react": "^2.1.2",
+    "@chakra-ui/system": "^2.1.1",
     "@dh-react-hooks/use-raf": "^0.9.1",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
