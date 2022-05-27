@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import {
   Box,
   List,
@@ -16,6 +17,39 @@ import {
   MdFavorite
 } from 'react-icons/md';
 
+const navMenu = [
+  {
+    name: 'Home',
+    icon: MdHome,
+    route: '/'
+  },
+  {
+    name: 'Search',
+    icon: MdSearch,
+    route: '/search'
+  },
+  {
+    name: 'Your Library',
+    icon: MdLibraryMusic,
+    route: '/library'
+  }
+];
+
+const musicMenu = [
+  {
+    name: 'Create Playlist',
+    icon: MdPlaylistAdd,
+    route: '/'
+  },
+  {
+    name: 'Favorites',
+    icon: MdFavorite,
+    route: '/'
+  }
+];
+
+const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`);
+
 const Sidebar = () => {
   return (
     <Box
@@ -25,11 +59,61 @@ const Sidebar = () => {
       px='5px'
       color='gray'
     >
-      <Box py='20px'>
+      <Box py='20px' height='100%'>
         <Box>
-          <Box width='120px' mb='20px'>
-            LOGO player
+          <Box width='120px' mb='20px' px='20px'>
+            LOGO
           </Box>
+          <Box mb='20px'>
+            <List spacing={2}>
+              {navMenu.map((menu) => (
+                <ListItem px='20px' fontSize='16px' key={menu.name}>
+                  <LinkBox>
+                    <NextLink href={menu.route}>
+                      <LinkOverlay cursor='pointer'>
+                        <ListIcon as={menu.icon} color='white' mr='20px' />
+                        {menu.name}
+                      </LinkOverlay>
+                    </NextLink>
+                  </LinkBox>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+          <Box>
+            <List spacing={2}>
+              {musicMenu.map((item) => (
+                <ListItem px='20px' fontSize='16px' key={item.name}>
+                  <LinkBox>
+                    <NextLink href={item.route}>
+                      <LinkOverlay cursor='pointer'>
+                        <ListIcon as={item.icon} color='white' mr='20px' />
+                        {item.name}
+                      </LinkOverlay>
+                    </NextLink>
+                  </LinkBox>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Box>
+        <Box pr='20px'>
+          <Divider color='gray.800' my='20px' />
+        </Box>
+        <Box height='66%' overflowY='auto' py='20px'>
+          <List spacing={2}>
+                {playlists.map(playlist => (
+                  <ListItem px='20px' key={playlist}>
+                    <LinkBox>
+                      <NextLink href='/' passHref>
+                        <LinkOverlay cursor='pointer'>
+                          {playlist}
+                        </LinkOverlay>
+                      </NextLink>
+                    </LinkBox>
+                  </ListItem>
+                ))}
+          </List>
         </Box>
       </Box>
     </Box>
