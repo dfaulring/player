@@ -17,7 +17,23 @@ import {
 } from 'react-icons/md';
 
 const Sidebar = () => {
-  return <div>hello from sidebar</div>;
+  return (
+    <Box
+      width='100%'
+      height='calc(100vh - 100px)'
+      bg='black'
+      px='5px'
+      color='gray'
+    >
+      <Box py='20px'>
+        <Box>
+          <Box width='120px' mb='20px'>
+            LOGO player
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
 export default Sidebar;
