@@ -102,17 +102,15 @@ const Sidebar = () => {
         </Box>
         <Box height='66%' overflowY='auto' py='20px'>
           <List spacing={2}>
-                {playlists.map(playlist => (
-                  <ListItem px='20px' key={playlist}>
-                    <LinkBox>
-                      <NextLink href='/' passHref>
-                        <LinkOverlay cursor='pointer'>
-                          {playlist}
-                        </LinkOverlay>
-                      </NextLink>
-                    </LinkBox>
-                  </ListItem>
-                ))}
+            {playlists.map((playlist) => (
+              <ListItem px='20px' key={playlist}>
+                <LinkBox>
+                  <NextLink href='/' passHref>
+                    <LinkOverlay cursor='pointer'>{playlist}</LinkOverlay>
+                  </NextLink>
+                </LinkBox>
+              </ListItem>
+            ))}
           </List>
         </Box>
       </Box>
