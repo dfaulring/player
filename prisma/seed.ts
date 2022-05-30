@@ -5,6 +5,11 @@ import { artistsData } from './songsData';
 const prisma = new PrismaClient();
 
 const run = async () => {
+  await prisma.song.deleteMany({});
+  await prisma.playlist.deleteMany({});
+  await prisma.artist.deleteMany({});
+  await prisma.user.deleteMany({});
+
   await Promise.all(
     artistsData.map(async (artist) => {
       return prisma.artist.upsert({
