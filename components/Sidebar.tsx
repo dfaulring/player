@@ -54,7 +54,7 @@ const musicMenu = [
 const Sidebar = () => {
   const { playlists } = usePlaylist();
 
-  console.log('runnning', playlists)
+  console.log('runnning', playlists);
 
   return (
     <Box
@@ -110,7 +110,15 @@ const Sidebar = () => {
             {playlists.map((playlist: any) => (
               <ListItem px='20px' key={playlist.id}>
                 <LinkBox>
-                  <NextLink href='/' passHref>
+                  <NextLink
+                    href={{
+                      pathname: '/playlist/[id]',
+                      query: {
+                        id: playlist.id
+                      }
+                    }}
+                    passHref
+                  >
                     <LinkOverlay cursor='pointer'>{playlist.name}</LinkOverlay>
                   </NextLink>
                 </LinkBox>
