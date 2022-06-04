@@ -30,7 +30,7 @@ const Playlist = ({ playlist }) => {
       description={`${playlist.songs.length} songs`}
       image='https://i.pravatar.cc/300'
     >
-      <SongsTable />
+      <SongsTable songs={playlist.songs} />
     </GradientLayout>
   );
 };
