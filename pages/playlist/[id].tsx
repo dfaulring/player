@@ -40,13 +40,23 @@ interface JwtPayload {
 }
 
 export const getServerSideProps = async ({ query, req }) => {
-  const { id } = validateToken(
-    req.cookies['PLAYER_ACCESS_TOKEN']
-  ) as JwtPayload;
+  let user: any;
+
+  try {
+    user = validateToken(req.cookies['PLAYER_ACCESS_TOKEN']) as JwtPayload;
+  } catch (err) {
+    return {
+      redirect: {
+        permanant: false,
+        destination: '/signin'
+      }
+    };
+  }
+
   const [playlist] = await prisma.playlist.findMany({
     where: {
       id: +query.id,
-      userId: id
+      userId: user.id
     },
     include: {
       songs: {
